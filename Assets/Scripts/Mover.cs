@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
-
     [SerializeField] private NavMeshAgent _navMeshAgent;
+
+    [SerializeField] private Animator _animator;
 
     private Ray _ray;
     private Camera _mainCam;
@@ -27,13 +28,13 @@ public class Mover : MonoBehaviour
 
     private void SendRay()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             _ray = _mainCam.ScreenPointToRay(Input.mousePosition);
             MoveToCursor();
         }
 
-        Debug.DrawRay(_ray.origin, _ray.direction, Color.green, 50);
+        UpdateAnimator();
     }
 
     private void MoveToCursor()
@@ -42,12 +43,14 @@ public class Mover : MonoBehaviour
         if (hasHit)
         {
             _navMeshAgent.SetDestination(hit.point);
-            print(hit.point);
         }
     }
 
-    private void Move()
+    private void UpdateAnimator()
     {
-        _navMeshAgent.SetDestination(_target.position);
+        Vector3 velocity = _navMeshAgent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        _animator.SetFloat("forwardSpeed", speed);
     }
 }
