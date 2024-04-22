@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerControllerInnequin
       objectReference: {fileID: 0}
+    - target: {fileID: 2311024790950539498, guid: 171587bd3eb30114dabe2a9bbc214f2e, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5395921512146893128, guid: 171587bd3eb30114dabe2a9bbc214f2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1821,14 +1825,13 @@ MonoBehaviour:
   m_APISecret: 5aRjDzBGPf5PTzd25rHFiazxIyqZ88n1qLjJlQV2ZQA31nmx62QcQta9q24R8GT7
   m_CustomToken: 
   m_PublicWorkspace: 
+  m_AutoScene: 0
   m_Continuation:
     continuationType: 0
     dialogHistory:
       history: []
     externallySavedState: 
   m_MaxWaitingListSize: 100
-  m_PreviousDialog:
-    phrases: []
 --- !u!1 &4888374971491053796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,8 +1986,8 @@ GameObject:
   - component: {fileID: 3753617578368911160}
   - component: {fileID: 2395919964813119399}
   - component: {fileID: 4881369808059828751}
-  - component: {fileID: 5556377779205328931}
   - component: {fileID: 5556377779205328932}
+  - component: {fileID: 5556377779205328933}
   m_Layer: 0
   m_Name: InworldController
   m_TagString: Untagged
@@ -1992,19 +1995,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5556377779205328931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556377779205328930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f92db331c103a4aa88a10e82275245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ManualAudioHandling: 0
 --- !u!114 &5556377779205328932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2033,6 +2023,22 @@ MonoBehaviour:
   OnPlayerStopSpeaking:
     m_PersistentCalls:
       m_Calls: []
+  m_DumpAudioHotKey: 48
+--- !u!114 &5556377779205328933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556377779205328930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3241affa9c0462fa7193839038c32c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ManualAudioHandling: 0
+  m_SelectingMethod: 2
+  m_RefreshRate: 0.5
 --- !u!4 &5566405438834257203
 Transform:
   m_ObjectHideFlags: 0
@@ -2528,9 +2534,6 @@ MonoBehaviour:
       avatarProgress: 0
     thumbnail: {fileID: 0}
   m_CharacterEvents:
-    onCharacterRegistered:
-      m_PersistentCalls:
-        m_Calls: []
     onCharacterSelected:
       m_PersistentCalls:
         m_Calls: []

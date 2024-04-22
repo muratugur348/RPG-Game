@@ -51,7 +51,6 @@ namespace Inworld.Sample
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-
             // Rotation
             if (Cursor.lockState != CursorLockMode.None)
             {
@@ -61,7 +60,7 @@ namespace Inworld.Sample
                 m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
             }
             // Translation
-            Vector3 translation = GetInputTranslationDirection() * Time.deltaTime;
+           /* Vector3 translation = GetInputTranslationDirection() * Time.deltaTime;
 
             // Speed up movement when shift key held
             if (Input.GetKey(KeyCode.LeftShift))
@@ -80,7 +79,7 @@ namespace Inworld.Sample
             float rotationLerpPct = 1f - Mathf.Exp(Mathf.Log(1f - 0.99f) / rotationLerpTime * Time.deltaTime);
             m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
 
-            m_InterpolatingCameraState.UpdateTransform(transform);
+            m_InterpolatingCameraState.UpdateTransform(transform);*/
         }
 
         void OnEnable()

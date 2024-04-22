@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using GameDevTV.Inventories;
 using GameDevTV.Saving;
-using RPG.Core;
+using GameDevTV.Utils;
 using UnityEngine;
 
 namespace RPG.Quests
 {
     public class QuestList : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
-        public List<QuestStatus> statuses = new List<QuestStatus>();
+        List<QuestStatus> statuses = new List<QuestStatus>();
 
         public event Action onUpdate;
+
+        private void Update() {
+            CompleteObjectivesByPredicates();
+        }
 
         public void AddQuest(Quest quest)
         {
@@ -28,7 +32,6 @@ namespace RPG.Quests
         public void CompleteObjective(Quest quest, string objective)
         {
             QuestStatus status = GetQuestStatus(quest);
-            print(status == null);
             status.CompleteObjective(objective);
             if (status.IsComplete())
             {
@@ -74,6 +77,24 @@ namespace RPG.Quests
             }
         }
 
+        private void CompleteObjectivesByPredicates()
+        {
+            foreach (QuestStatus status in statuses)
+            {
+                if (status.IsComplete()) continue;
+                Quest quest = status.GetQuest();
+                foreach (var objective in quest.GetObjectives())
+                {
+                    if (status.IsObjectiveComplete(objective.reference)) continue;
+                    if (!objective.usesCondition) continue;
+                    if (objective.completionCondition.Check(GetComponents<IPredicateEvaluator>()))
+                    {
+                        CompleteObjective(quest, objective.reference);
+                    }
+                }
+            }
+        }
+
         public object CaptureState()
         {
             List<object> state = new List<object>();
@@ -100,10 +121,10 @@ namespace RPG.Quests
         {
             switch (predicate)
             {
-                case "HasQuest":
-                    return HasQuest(Quest.GetByName(parameters[0]));
+                case "HasQuest": 
+                return HasQuest(Quest.GetByName(parameters[0]));
                 case "CompletedQuest":
-                    return GetQuestStatus(Quest.GetByName(parameters[0])).IsComplete();
+                return GetQuestStatus(Quest.GetByName(parameters[0])).IsComplete();
             }
 
             return null;
