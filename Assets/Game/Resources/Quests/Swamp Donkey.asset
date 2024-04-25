@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectives:
   - reference: train
-    description: Train up
+    description: Press T Button And Increase Strength
     usesCondition: 1
     completionCondition:
       and:
@@ -25,7 +25,7 @@ MonoBehaviour:
           - 2
           negate: 0
   - reference: equip
-    description: Get equiped
+    description: Buy a Sword And Equip It
     usesCondition: 1
     completionCondition:
       and:
@@ -35,7 +35,7 @@ MonoBehaviour:
           - 06937866-e68a-430c-ab01-b0c3c8906e95
           negate: 0
   - reference: kill
-    description: Kill it!
+    description: Kill three enemies
     usesCondition: 0
     completionCondition:
       and: []
