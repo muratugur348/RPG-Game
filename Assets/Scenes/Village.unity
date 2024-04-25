@@ -2712,7 +2712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: E
+  m_text: Tab
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 096073568df88ed42b6ac0fa35b3bb18, type: 2}
   m_sharedMaterial: {fileID: 1486835002092494517, guid: 096073568df88ed42b6ac0fa35b3bb18,
@@ -2740,8 +2740,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4034,6 +4034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 312194766}
   - component: {fileID: 312194765}
+  - component: {fileID: 312194767}
   m_Layer: 0
   m_Name: GoalManager
   m_TagString: Untagged
@@ -4068,6 +4069,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &312194767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312194764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f8be4928d6b7a42ae3817a73e03a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 9cd2b27dea9385742b814301a9c1568a, type: 2}
 --- !u!4 &313207613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4813294931787184, guid: 12f912cf22db3d948a728f686b6a022c,
@@ -8347,7 +8361,7 @@ Transform:
   m_Children:
   - {fileID: 235384436}
   m_Father: {fileID: 747408756}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &698942266 stripped
 Transform:
@@ -8985,7 +8999,7 @@ PrefabInstance:
     - target: {fileID: 1736438211972634374, guid: 46b13452883025542a8586a8d8f82e7c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9953206
       objectReference: {fileID: 0}
     - target: {fileID: 1736438211972634374, guid: 46b13452883025542a8586a8d8f82e7c,
         type: 3}
@@ -8995,7 +9009,7 @@ PrefabInstance:
     - target: {fileID: 1736438211972634374, guid: 46b13452883025542a8586a8d8f82e7c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.096627496
       objectReference: {fileID: 0}
     - target: {fileID: 1736438211972634374, guid: 46b13452883025542a8586a8d8f82e7c,
         type: 3}
@@ -9010,7 +9024,7 @@ PrefabInstance:
     - target: {fileID: 1736438211972634374, guid: 46b13452883025542a8586a8d8f82e7c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 11.09
       objectReference: {fileID: 0}
     - target: {fileID: 1736438211972634374, guid: 46b13452883025542a8586a8d8f82e7c,
         type: 3}
@@ -9101,6 +9115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Questman
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843423110343052880, guid: 46b13452883025542a8586a8d8f82e7c,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b13452883025542a8586a8d8f82e7c, type: 3}
@@ -10031,6 +10050,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Quest Giver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601105127914280056, guid: ecff3a956f1e5d547846e96af68ac0d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecff3a956f1e5d547846e96af68ac0d3, type: 3}
@@ -29311,7 +29335,7 @@ PrefabInstance:
     - target: {fileID: 5263524460118599961, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.099
+      value: -570.74927
       objectReference: {fileID: 0}
     - target: {fileID: 5263917500653042737, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}

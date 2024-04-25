@@ -20,9 +20,9 @@ MonoBehaviour:
     brainName: workspaces/deneme-080kk/characters/john_the_retired_warrior
     givenName: John the Retired Warrior
     characterAssets:
-      rpmModelUri: 
-      rpmImageUriPortrait: 
-      rpmImageUriPosture: 
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/bbcf3c42-6b83-4c8d-b6d7-5fae08f80c14.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/bbcf3c42-6b83-4c8d-b6d7-5fae08f80c14_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/bbcf3c42-6b83-4c8d-b6d7-5fae08f80c14_posture.jpg
       avatarImg: 
       avatarImgOriginal: 
       thumbnailProgress: 0

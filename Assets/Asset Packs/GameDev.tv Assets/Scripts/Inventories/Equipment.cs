@@ -109,6 +109,8 @@ namespace GameDevTV.Inventories
             {
                 foreach (var item in equippedItems.Values)
                 {
+                    print(item.GetItemID()+" id");
+                    print(parameters[0]+" param");
                     if (item.GetItemID() == parameters[0])
                     {
                         return true;

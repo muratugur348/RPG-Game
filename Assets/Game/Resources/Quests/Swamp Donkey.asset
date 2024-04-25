@@ -22,7 +22,7 @@ MonoBehaviour:
         - predicate: MinimumTrait
           parameters:
           - Strength
-          - 4
+          - 2
           negate: 0
   - reference: equip
     description: Get equiped
@@ -32,7 +32,7 @@ MonoBehaviour:
       - or:
         - predicate: HasItemEquiped
           parameters:
-          - 77ad666c-513c-4c88-87b2-c8594bcd5a89
+          - 06937866-e68a-430c-ab01-b0c3c8906e95
           negate: 0
   - reference: kill
     description: Kill it!

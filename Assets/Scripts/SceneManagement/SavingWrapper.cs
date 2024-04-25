@@ -15,7 +15,7 @@ namespace RPG.SceneManagement
         [SerializeField] int firstLevelBuildIndex = 1;
         [SerializeField] int menuLevelBuildIndex = 0;
 
-        public void ContinueGame() 
+        public void ContinueGame()
         {
             StartCoroutine(LoadLastScene());
         }
@@ -71,8 +71,9 @@ namespace RPG.SceneManagement
             yield return fader.FadeIn(fadeInTime);
         }
 
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.S))
+        private void Update()
+        {
+            /*if (Input.GetKeyDown(KeyCode.S))
             {
                 Save();
             }
@@ -83,7 +84,7 @@ namespace RPG.SceneManagement
             if (Input.GetKeyDown(KeyCode.Delete))
             {
                 Delete();
-            }
+            }*/
         }
 
         public void Load()

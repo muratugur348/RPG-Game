@@ -21,29 +21,8 @@ MonoBehaviour:
     billingAccount: billing-accounts/c836fba2-271b-4d40-95a4-3e81fc5cf8c0
     meta: 
     runtimeAccess: RUNTIME_ACCESS_PRIVATE
-    scenes:
-    - name: workspaces/deneme-080kk/scenes/rpg_game
-      displayName: RPG Game
-      description: The scene that RPG game involves.
-      characterReferences:
-      - character: workspaces/deneme-080kk/characters/john_the_retired_warrior
-        characterOverloads:
-        - defaultCharacterDescription:
-            givenName: John the Retired Warrior
-            description: John is a retired warrior in my RPG game whose sole mission
-              is to kill 3 opponents.
-          defaultCharacterAssets:
-            rpmModelUri: 
-            rpmImageUriPortrait: 
-            rpmImageUriPosture: 
-            avatarImg: 
-            avatarImgOriginal: 
-            thumbnailProgress: 0
-            avatarProgress: 0
-    keySecrets:
-    - key: 9w0Pxat6Ga6egkKaqXsEo046lAns09nV
-      secret: kXapQjn9DaDRmtrLPflmC8L1VAYI5kuezqbAahgIBaiou3LPW8KjPVyiaR3RAHZj
-      state: ACTIVE
+    scenes: []
+    keySecrets: []
   - name: workspaces/default-6cob21b5kecdmei83_tiqq
     displayName: Inworld AI Demos
     experimentalFeatures: []
