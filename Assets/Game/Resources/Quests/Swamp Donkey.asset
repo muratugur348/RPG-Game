@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectives:
   - reference: train
-    description: Press T Button And Increase Strength
+    description: Press T Button And Increase Traits
     usesCondition: 1
     completionCondition:
       and:
@@ -22,7 +22,7 @@ MonoBehaviour:
         - predicate: MinimumTrait
           parameters:
           - Strength
-          - 2
+          - 3
           negate: 0
   - reference: equip
     description: Buy a Sword And Equip It

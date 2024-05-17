@@ -12,7 +12,8 @@ namespace RPG.UI
 
         [SerializeField] TMP_InputField newGameNameField;
 
-        private void Awake() {
+        private void Awake()
+        {
             savingWrapper = new LazyValue<SavingWrapper>(GetSavingWrapper);
         }
 
@@ -29,6 +30,7 @@ namespace RPG.UI
         public void NewGame()
         {
             savingWrapper.value.NewGame(newGameNameField.text);
+            PlayerPrefs.SetInt("isFirstTime", 0);
         }
 
         public void QuitGame()

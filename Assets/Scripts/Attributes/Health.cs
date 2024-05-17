@@ -2,6 +2,7 @@ using System;
 using GameDevTV.Utils;
 using RPG.Core;
 using GameDevTV.Saving;
+using RPG.Control;
 using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,7 +24,8 @@ namespace RPG.Attributes
 
         bool wasDeadLastFrame = false;
 
-        private void Awake() {
+        private void Awake()
+        {
             healthPoints = new LazyValue<float>(GetInitialHealth);
         }
 
@@ -37,11 +39,13 @@ namespace RPG.Attributes
             healthPoints.ForceInit();
         }
 
-        private void OnEnable() {
+        private void OnEnable()
+        {
             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
         }
 
-        private void OnDisable() {
+        private void OnDisable()
+        {
             GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
         }
 
@@ -53,16 +57,17 @@ namespace RPG.Attributes
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
-            
-            if(IsDead())
+
+            if (IsDead())
             {
                 onDie.Invoke();
                 AwardExperience(instigator);
-            } 
+            }
             else
             {
                 takeDamage.Invoke(damage);
             }
+
             UpdateState();
         }
 
@@ -113,7 +118,7 @@ namespace RPG.Attributes
         {
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) return;
-
+            FindObjectOfType<PlayerController>().IncreaseKilledEnemies();
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
@@ -130,8 +135,8 @@ namespace RPG.Attributes
 
         public void RestoreState(object state)
         {
-            healthPoints.value = (float) state;
-            
+            healthPoints.value = (float)state;
+
             UpdateState();
         }
     }

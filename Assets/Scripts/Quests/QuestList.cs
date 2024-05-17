@@ -10,7 +10,7 @@ namespace RPG.Quests
 {
     public class QuestList : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
-        List<QuestStatus> statuses = new List<QuestStatus>();
+        public List<QuestStatus> statuses = new List<QuestStatus>();
 
         public event Action onUpdate;
 

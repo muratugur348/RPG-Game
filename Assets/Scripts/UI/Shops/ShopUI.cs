@@ -101,6 +101,7 @@ namespace RPG.UI.Shops
 
         public void ConfirmTransaction()
         {
+            FindObjectOfType<LineToJohn>().Close();
             currentShop.ConfirmTransaction();
         }
 

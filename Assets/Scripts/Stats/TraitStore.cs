@@ -9,6 +9,7 @@ namespace RPG.Stats
     public class TraitStore : MonoBehaviour, IModifierProvider, ISaveable, IPredicateEvaluator
     {
         [SerializeField] TraitBonus[] bonusConfig;
+
         [System.Serializable]
         class TraitBonus
         {
@@ -34,10 +35,12 @@ namespace RPG.Stats
                 {
                     additiveBonusCache[bonus.stat] = new Dictionary<Trait, float>();
                 }
+
                 if (!percentageBonusCache.ContainsKey(bonus.stat))
                 {
                     percentageBonusCache[bonus.stat] = new Dictionary<Trait, float>();
                 }
+
                 additiveBonusCache[bonus.stat][bonus.trait] = bonus.additiveBonusPerPoint;
                 percentageBonusCache[bonus.stat][bonus.trait] = bonus.percentageBonusPerPoint;
             }
@@ -55,7 +58,7 @@ namespace RPG.Stats
 
         public int GetStagedPoints(Trait trait)
         {
-            return stagedPoints.ContainsKey(trait)? stagedPoints[trait] : 0;
+            return stagedPoints.ContainsKey(trait) ? stagedPoints[trait] : 0;
         }
 
         public void AssignPoints(Trait trait, int points)
@@ -84,10 +87,12 @@ namespace RPG.Stats
             {
                 total += points;
             }
+
             foreach (int points in stagedPoints.Values)
             {
                 total += points;
             }
+
             return total;
         }
 
@@ -97,6 +102,7 @@ namespace RPG.Stats
             {
                 assignedPoints[trait] = GetProposedPoints(trait);
             }
+
             stagedPoints.Clear();
         }
 
@@ -141,11 +147,19 @@ namespace RPG.Stats
         {
             if (predicate == "MinimumTrait")
             {
+                int totalPoints = 0;
+                foreach (KeyValuePair<Trait, int> assignedPoint in assignedPoints)
+                {
+                    totalPoints += assignedPoint.Value;
+                }
+
+                return totalPoints >= Int32.Parse(parameters[1]);
                 if (Enum.TryParse<Trait>(parameters[0], out Trait trait))
                 {
                     return GetPoints(trait) >= Int32.Parse(parameters[1]);
-                } 
+                }
             }
+
             return null;
         }
     }

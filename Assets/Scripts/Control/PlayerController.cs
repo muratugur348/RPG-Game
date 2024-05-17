@@ -6,6 +6,7 @@ using System;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
 using GameDevTV.Inventories;
+using RPG.Quests;
 
 namespace RPG.Control
 {
@@ -26,10 +27,13 @@ namespace RPG.Control
         [SerializeField] float maxNavMeshProjectionDistance = 1f;
         [SerializeField] float raycastRadius = 1f;
         [SerializeField] int numberOfAbilities = 6;
+        public int totalKilledEnemies;
+        public Quest myQuest;
 
         bool isDraggingUI = false;
 
-        private void Awake() {
+        private void Awake()
+        {
             health = GetComponent<Health>();
             actionStore = GetComponent<ActionStore>();
         }
@@ -37,7 +41,7 @@ namespace RPG.Control
         private void Update()
         {
             if (InteractWithUI()) return;
-            if (health.IsDead()) 
+            if (health.IsDead())
             {
                 SetCursor(CursorType.None);
                 return;
@@ -57,19 +61,23 @@ namespace RPG.Control
             {
                 isDraggingUI = false;
             }
+
             if (EventSystem.current.IsPointerOverGameObject())
             {
                 if (Input.GetMouseButtonDown(0))
                 {
                     isDraggingUI = true;
                 }
+
                 SetCursor(CursorType.UI);
                 return true;
             }
+
             if (isDraggingUI)
             {
                 return true;
             }
+
             return false;
         }
 
@@ -99,6 +107,7 @@ namespace RPG.Control
                     }
                 }
             }
+
             return false;
         }
 
@@ -110,6 +119,7 @@ namespace RPG.Control
             {
                 distances[i] = hits[i].distance;
             }
+
             Array.Sort(distances, hits);
             return hits;
         }
@@ -126,9 +136,11 @@ namespace RPG.Control
                 {
                     GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
+
                 SetCursor(CursorType.Movement);
                 return true;
             }
+
             return false;
         }
 
@@ -165,12 +177,23 @@ namespace RPG.Control
                     return mapping;
                 }
             }
+
             return cursorMappings[0];
         }
 
         public static Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+        public void IncreaseKilledEnemies()
+        {
+            totalKilledEnemies++;
+            if (totalKilledEnemies >= 3)
+            {
+                QuestList questList = GetComponent<QuestList>();
+                questList.CompleteObjective(myQuest, "kill");
+            }
         }
     }
 }
